@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LogIn</title>
+</head>
+<body>
+    <div> 
+        <h1>Log In </h1>
+        <thead>
+            <tbody>
+                <tr>
+                    <td>Username</td>
+                    <td><input type ="text" id="txtUsername" placeholder="Username"/>
+                </tr>
+                    <td>
+                        Password
+                    </td>
+                    <td>
+                        <input type="password" id="txtPassword" placeholder="Password"/>
+                    </td>
+                <tr class="success">
+                    <td colspan="2"> 
+                        <input id="btnLogIn" class="btn btn-success"
+                               type="button" value="LogIn" />
+                  </tr>
+            </tbody>
+        </thead>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/boostrap.js></script>
+
+    <script type="text/javascript">
+        $(document).readt(function () {
+            $('btnLogIn').click(function () {
+            var username = $('#txtUsername').val();
+            var password = $('txtPassword').val();
+                alert("Successfully logged in");
+                $.ajax({
+                    url: '/api/account/login'
+                    method: 'Post',
+                    data: {
+                        "Username": username,
+                        "Password"; password
+                    },
+                    success: function () {
+                        alert("Success");
+                    },
+                    error: function (error) {
+                        alert("Error");
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
